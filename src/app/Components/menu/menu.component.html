@@ -1,0 +1,32 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isWeb$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isWeb$ | async) ? 'over' : 'side'"
+      [opened]="(isWeb$ | async) === false">
+
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="/usuario"><mat-icon aria-hidden="true" aria-label="Example home icon" fontIcon="login" color="primary">login</mat-icon>
+        Usuario</a>
+      <a mat-list-item href="/tabla"><mat-icon aria-hidden="true" aria-label="Example home icon" fontIcon="verified
+        " color="primary">verified</mat-icon> Membresia</a>
+      <a mat-list-item href="/dash"><mat-icon aria-hidden="true" aria-label="Example home icon" fontIcon="terminal" color="primary">terminal</mat-icon>
+        Cursos</a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="C8D2E0">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isWeb$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>CodeBlearn</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
